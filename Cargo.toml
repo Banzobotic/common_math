@@ -1,15 +1,18 @@
 [package]
 name = "common_math"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Banzobotic"]
 license-file = "LICENCE.txt"
 description = "A collection of common math functions"
 categories = ["mathematics"]
 keywords = ["round", "math", "util", "common"]
 readme = "README.md"
+homepage = "https://github.com/Banzobotic/common_math"
+repository = "https://github.com/Banzobotic/common_math"
 include = [
     "/src/**",
     "/Cargo.toml",
     "/README.md",
+    "/LICENCE.txt",
 ]
 edition = "2021"

@@ -10,9 +10,7 @@
 /// assert_eq!(round(123.456_f32, 2), 123.46_f64);
 /// ```
 #[inline]
-pub fn round<T>(number: T, decimal_places: u32) -> T 
-    where T: Float
-{
+pub fn round<T: Float>(number: T, decimal_places: u32) -> T {
     let power = 10_f64.powi(decimal_places as i32);
     number.apply_round(power)
 }
@@ -29,13 +27,10 @@ pub fn round<T>(number: T, decimal_places: u32) -> T
 /// assert_eq!(round_zeros(123_i32, 2), 100_i32);
 /// ```
 #[inline]
-pub fn round_zeros<T>(number: T, zeros: u32) -> T 
-    where T: Roundable
-{
+pub fn round_zeros<T: Roundable>(number: T, zeros: u32) -> T {
     let power = 10_f64.powi(-(zeros as i32));
     number.apply_round_zeros(power)
 }
-
 
 /// Returns the number rounded up to a given number of decimal places
 ///
@@ -49,9 +44,7 @@ pub fn round_zeros<T>(number: T, zeros: u32) -> T
 /// assert_eq!(round_up(123.454_f32, 2), 123.46_f32);
 /// ```
 #[inline]
-pub fn round_up<T>(number: T, decimal_places: u32) -> T 
-    where T: Float
-{
+pub fn round_up<T: Float>(number: T, decimal_places: u32) -> T {
     let power = 10_f64.powi(decimal_places as i32);
     number.apply_round_up(power)
 }
@@ -68,9 +61,7 @@ pub fn round_up<T>(number: T, decimal_places: u32) -> T
 /// assert_eq!(round_up_zeros(123_i32, 2), 200_i32);
 /// ```
 #[inline]
-pub fn round_up_zeros<T>(number: T, zeros: u32) -> T 
-    where T: Roundable
-{
+pub fn round_up_zeros<T: Roundable>(number: T, zeros: u32) -> T {
     let power = 10_f64.powi(-(zeros as i32));
     number.apply_round_up_zeros(power)
 }
@@ -87,9 +78,7 @@ pub fn round_up_zeros<T>(number: T, zeros: u32) -> T
 /// assert_eq!(round_dn(123.454_f32, 2), 123.454_f32);
 /// ```
 #[inline]
-pub fn round_dn<T>(number: T, decimal_places: u32) -> T 
-    where T: Float
-{
+pub fn round_dn<T: Float>(number: T, decimal_places: u32) -> T {
     let power = 10_f64.powi(decimal_places as i32);
     number.apply_round_dn(power)
 }
@@ -106,9 +95,7 @@ pub fn round_dn<T>(number: T, decimal_places: u32) -> T
 /// assert_eq!(round_dn_zeros(156_i32, 2), 100_i32);
 /// ```
 #[inline]
-pub fn round_dn_zeros<T>(number: T, zeros: u32) -> T 
-    where T: Roundable
-{
+pub fn round_dn_zeros<T: Roundable>(number: T, zeros: u32) -> T {
     let power = 10_f64.powi(-(zeros as i32));
     number.apply_round_dn_zeros(power)
 }
@@ -125,10 +112,12 @@ pub fn round_dn_zeros<T>(number: T, zeros: u32) -> T
 /// assert_eq!(round_sf(123.456_f32, 3), 123_f32);
 /// ```
 #[inline]
-pub fn round_sf<T: Float + std::cmp::PartialEq + Roundable + Copy>(number: T, sig_figs: u32) -> T
+pub fn round_sf<T>(number: T, sig_figs: u32) -> T
+where
+    T: Float + std::cmp::PartialEq + Roundable + Copy,
 {
     let s = number.private_to_string();
-    
+
     // Run first section if no fractional part, run second section if there is
     if number == number.private_trunc() {
         // Get number of digits
@@ -147,7 +136,7 @@ pub fn round_sf<T: Float + std::cmp::PartialEq + Roundable + Copy>(number: T, si
             digits += sides[0].len() as i32;
         }
         digits += sides[1].len() as i32;
-        
+
         // Round to number of significant figures
         let power = 10_f64.powi(sides[1].len() as i32 - digits + sig_figs as i32);
         number.apply_round(power)
@@ -166,11 +155,11 @@ impl Float for f32 {
     fn apply_round(self, power: f64) -> f32 {
         (self * power as f32).round() / power as f32
     }
-    
+
     fn apply_round_up(self, power: f64) -> f32 {
         (self * power as f32).ceil() / power as f32
     }
-    
+
     fn apply_round_dn(self, power: f64) -> f32 {
         (self * power as f32).floor() / power as f32
     }
@@ -188,7 +177,7 @@ impl Float for f64 {
     fn apply_round(self, power: f64) -> f64 {
         (self * power).round() / power
     }
-    
+
     fn apply_round_up(self, power: f64) -> f64 {
         (self * power).ceil() / power
     }

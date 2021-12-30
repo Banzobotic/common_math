@@ -3,7 +3,7 @@
 As its name suggests common_math provides ways to do common math functions more easily 
 than with the standard library alone.
 
-Currently, it only contains rounding functions, however may functions may be added in the future
+Currently, it only contains rounding functions, however more functions may be added in the future
 
 ## Modules
 
@@ -11,4 +11,4 @@ Currently, it only contains rounding functions, however may functions may be add
 
 ## Disclaimer
 
-This project is still early in development and all parts of the api are currently unstable
+This project is still in early development and all parts of the api are currently unstable

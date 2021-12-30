@@ -2,10 +2,10 @@
 name = "common_math"
 version = "0.0.1"
 authors = ["Banzobotic"]
-license = "Apache-2.0"
+license-file = "LICENCE.txt"
 description = "A collection of common math functions"
 categories = ["mathematics"]
-keywords = ["round", "math", "util", ]
+keywords = ["round", "math", "util", "common"]
 readme = "README.md"
 include = [
     "/src/**",

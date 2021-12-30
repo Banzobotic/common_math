@@ -1,0 +1,15 @@
+[package]
+name = "common_math"
+version = "0.0.1"
+authors = ["Banzobotic"]
+license = "Apache-2.0"
+description = "A collection of common math functions"
+categories = ["mathematics"]
+keywords = ["round", "math", "util", ]
+readme = "README.md"
+include = [
+    "/src/**",
+    "/Cargo.toml",
+    "/README.md",
+]
+edition = "2021"

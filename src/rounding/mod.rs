@@ -217,7 +217,7 @@ impl Roundable for f32 {
 
 impl Roundable for f64 {
     fn apply_round_zeros(self, power: f64) -> f64 {
-        self * power).round() / power
+        (self * power).round() / power
     }
 
     fn apply_ceil_zeros(self, power: f64) -> f64 {

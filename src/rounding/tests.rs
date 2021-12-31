@@ -16,31 +16,31 @@ fn test_round_zeros() {
 }
 
 #[test]
-fn test_round_up() {
-    assert_eq!(round_up(123.454_f64, 2), 123.46_f64);
-    assert_eq!(round_up(123.456_f64, 0), 124_f64);
-    assert_eq!(round_up(123.454_f32, 2), 123.46_f32);
+fn test_ceil() {
+    assert_eq!(ceil(123.454_f64, 2), 123.46_f64);
+    assert_eq!(ceil(123.456_f64, 0), 124_f64);
+    assert_eq!(ceil(123.454_f32, 2), 123.46_f32);
 }
 
 #[test]
-fn test_round_up_zeros() {
-    assert_eq!(round_up_zeros(123.456_f64, 1), 130_f64);
-    assert_eq!(round_up_zeros(123.456_f64, 0), 124_f64);
-    assert_eq!(round_up_zeros(123_i32, 2), 200_i32);
+fn test_ceil_zeros() {
+    assert_eq!(ceil_zeros(123.456_f64, 1), 130_f64);
+    assert_eq!(ceil_zeros(123.456_f64, 0), 124_f64);
+    assert_eq!(ceil_zeros(123_i32, 2), 200_i32);
 }
 
 #[test]
-fn test_round_dn() {
-    assert_eq!(round_dn(123.456_f64, 2), 123.45_f64);
-    assert_eq!(round_dn(123.456_f64, 0), 123_f64);
-    assert_eq!(round_dn(123.454_f32, 2), 123.45_f32);
+fn test_floor() {
+    assert_eq!(floor(123.456_f64, 2), 123.45_f64);
+    assert_eq!(floor(123.456_f64, 0), 123_f64);
+    assert_eq!(floor(123.454_f32, 2), 123.45_f32);
 }
 
 #[test]
-fn test_round_dn_zeros() {
-    assert_eq!(round_dn_zeros(123.456_f64, 1), 120_f64);
-    assert_eq!(round_dn_zeros(123.654_f64, 0), 123_f64);
-    assert_eq!(round_dn_zeros(156_i32, 2), 100_i32);
+fn test_floor_zeros() {
+    assert_eq!(floor_zeros(123.456_f64, 1), 120_f64);
+    assert_eq!(floor_zeros(123.654_f64, 0), 123_f64);
+    assert_eq!(floor_zeros(156_i32, 2), 100_i32);
 }
 
 #[test]

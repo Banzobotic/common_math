@@ -1,6 +1,6 @@
 [package]
 name = "common_math"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Banzobotic"]
 license-file = "LICENCE.txt"
 description = "A collection of common math functions"

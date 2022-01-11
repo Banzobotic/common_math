@@ -1,13 +1,14 @@
 [package]
 name = "common_math"
 version = "0.2.0"
-authors = ["Banzobotic"]
-license-file = "LICENCE.txt"
+authors = ["Banzobotic (Andrew Twigg)"]
+license = "MIT OR Apache-2.0"
 description = "A collection of common math functions"
 categories = ["mathematics"]
-keywords = ["round", "math", "util", "common"]
+keywords = ["round", "math", "util", "common", "rounding"]
 readme = "README.md"
 homepage = "https://github.com/Banzobotic/common_math"
+documentation = "https://docs.rs/common_math"
 repository = "https://github.com/Banzobotic/common_math"
 include = [
     "/src",

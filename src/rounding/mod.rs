@@ -112,21 +112,20 @@ pub fn floor_zeros<T: Roundable>(number: T, zeros: u32) -> T {
 /// assert_eq!(round_sf(123.456_f32, 3), 123_f32);
 /// ```
 #[inline]
-pub fn round_sf<T: Float>(number: T, sig_figs: u32) -> T
+pub fn round_sf<T: Roundable>(number: T, sig_figs: u32) -> T
 {
     // Get number of digits
     let digits: i32 = number.get_digits();
 
     // Round to number of significant figures
-    let power = 10_f64.powi(-digits + sig_figs as i32);
-    number.apply_round(power)
+    let power = 10_f64.powi(digits - sig_figs as i32);
+    number.apply_round_zeros(power)
 }
 
 pub trait Float {
     fn apply_round(self, power: f64) -> Self;
     fn apply_ceil(self, power: f64) -> Self;
     fn apply_floor(self, power: f64) -> Self;
-    fn get_digits(&self) -> i32;
 }
 
 impl Float for f32 {
@@ -140,10 +139,6 @@ impl Float for f32 {
 
     fn apply_floor(self, power: f64) -> f32 {
         (self * power as f32).floor() / power as f32
-    }
-
-    fn get_digits(&self) -> i32 {
-        self.log10().ceil() as i32
     }
 }
 
@@ -159,16 +154,14 @@ impl Float for f64 {
     fn apply_floor(self, power: f64) -> f64 {
         (self * power).floor() / power
     }
-
-    fn get_digits(&self) -> i32 {
-        self.log10().ceil() as i32
-    }
 }
+
 
 pub trait Roundable {
     fn apply_round_zeros(self, power: f64) -> Self;
     fn apply_ceil_zeros(self, power: f64) -> Self;
     fn apply_floor_zeros(self, power: f64) -> Self;
+    fn get_digits(&self) -> i32;
 }
 
 impl Roundable for f32 {
@@ -182,6 +175,10 @@ impl Roundable for f32 {
 
     fn apply_floor_zeros(self, power: f64) -> f32 {
         (self / power as f32).floor() * power as f32
+    }
+
+    fn get_digits(&self) -> i32 {
+        self.abs().log10().ceil() as i32
     }
 }
 
@@ -197,6 +194,10 @@ impl Roundable for f64 {
     fn apply_floor_zeros(self, power: f64) -> f64 {
         (self / power).floor() * power
     }
+
+    fn get_digits(&self) -> i32 {
+        self.abs().log10().ceil() as i32
+    }
 }
 
 impl Roundable for i8 {
@@ -210,6 +211,10 @@ impl Roundable for i8 {
 
     fn apply_floor_zeros(self, power: f64) -> i8 {
         ((self as f64 / power).floor() * power) as i8
+    }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
     }
 }
 
@@ -225,6 +230,10 @@ impl Roundable for i16 {
     fn apply_floor_zeros(self, power: f64) -> i16 {
         ((self as f64 / power).floor() * power) as i16
     }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
+    }
 }
 
 impl Roundable for i32 {
@@ -239,6 +248,10 @@ impl Roundable for i32 {
     fn apply_floor_zeros(self, power: f64) -> i32 {
         ((self as f64 / power).floor() * power) as i32
     }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
+    }
 }
 
 impl Roundable for i64 {
@@ -252,6 +265,10 @@ impl Roundable for i64 {
 
     fn apply_floor_zeros(self, power: f64) -> i64 {
         ((self as f64 / power).floor() * power) as i64
+    }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
     }
 }
 
@@ -281,6 +298,10 @@ impl Roundable for u8 {
     fn apply_floor_zeros(self, power: f64) -> u8 {
         ((self as f64 / power).floor() * power) as u8
     }
+    
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
+    }
 }
 
 impl Roundable for u16 {
@@ -294,6 +315,10 @@ impl Roundable for u16 {
 
     fn apply_floor_zeros(self, power: f64) -> u16 {
         ((self as f64 / power).floor() * power) as u16
+    }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
     }
 }
 
@@ -309,6 +334,10 @@ impl Roundable for u32 {
     fn apply_floor_zeros(self, power: f64) -> u32 {
         ((self as f64 / power).floor() * power) as u32
     }
+
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
+    }
 }
 
 impl Roundable for u64 {
@@ -318,10 +347,14 @@ impl Roundable for u64 {
 
     fn apply_ceil_zeros(self, power: f64) -> u64 {
         ((self as f64 / power).ceil() * power) as u64
-}
+    }
 
     fn apply_floor_zeros(self, power: f64) -> u64 {
         ((self as f64 / power).floor() * power) as u64
+    }
+    
+    fn get_digits(&self) -> i32 {
+        (*self as f64).abs().log10().ceil() as i32
     }
 }
 

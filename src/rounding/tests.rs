@@ -13,6 +13,7 @@ fn test_round_zeros() {
     assert_eq!(round_zeros(123.456_f64, 1), 120_f64);
     assert_eq!(round_zeros(123.456_f64, 0), 123_f64);
     assert_eq!(round_zeros(123_i32, 2), 100_i32);
+    assert_eq!(round_zeros(12345_u64, 1), 12350_u64);
 }
 
 #[test]
@@ -27,6 +28,10 @@ fn test_ceil_zeros() {
     assert_eq!(ceil_zeros(123.456_f64, 1), 130_f64);
     assert_eq!(ceil_zeros(123.456_f64, 0), 124_f64);
     assert_eq!(ceil_zeros(123_i32, 2), 200_i32);
+    assert_eq!(ceil_zeros(123453789_u64, 4), 123460000);
+    assert_eq!(ceil_zeros(12345_u32, 0), 12345_u32);
+    assert_eq!(ceil_zeros(-12345_i32, 3), -12000_i32);
+    // assert_eq!(ceil_zeros(-12345_i128, 3), -12000_i128);
 }
 
 #[test]
@@ -41,6 +46,7 @@ fn test_floor_zeros() {
     assert_eq!(floor_zeros(123.456_f64, 1), 120_f64);
     assert_eq!(floor_zeros(123.654_f64, 0), 123_f64);
     assert_eq!(floor_zeros(156_i32, 2), 100_i32);
+    // assert_eq!(round_zeros(123456789_i128, 4), 123450000);
 }
 
 #[test]

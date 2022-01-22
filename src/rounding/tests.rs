@@ -6,6 +6,8 @@ fn test_round() {
     assert_eq!(round(123.456_f64, 2), 123.46_f64);
     assert_eq!(round(123.456_f64, 0), 123_f64);
     assert_eq!(round(123.456_f32, 2), 123.46_f32);
+    assert_eq!(round(-123.456_f64, 1), -123.5);
+    assert_eq!(round(123_f64, 2), 123_f64);
 }
 
 #[test]
@@ -21,6 +23,8 @@ fn test_ceil() {
     assert_eq!(ceil(123.454_f64, 2), 123.46_f64);
     assert_eq!(ceil(123.456_f64, 0), 124_f64);
     assert_eq!(ceil(123.454_f32, 2), 123.46_f32);
+    assert_eq!(ceil(-123.456_f64, 1), -123.4_f64);
+    assert_eq!(ceil(123_f64, 2), 123_f64);
 }
 
 #[test]
@@ -39,6 +43,8 @@ fn test_floor() {
     assert_eq!(floor(123.456_f64, 2), 123.45_f64);
     assert_eq!(floor(123.456_f64, 0), 123_f64);
     assert_eq!(floor(123.454_f32, 2), 123.45_f32);
+    assert_eq!(floor(-123.426_f64, 1), -123.5);
+    assert_eq!(floor(123_f64, 2), 123_f64);
 }
 
 #[test]

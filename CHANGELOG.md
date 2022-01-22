@@ -1,5 +1,13 @@
 # **Changelog**
 
+All notable changes to this project will be documented in this file.
+
+This project adheres to Semantic Versioning.
+
+## 0.2.3
+- Improvements to documentation
+- Hide apply_round and other private functions from documentation
+
 ## 0.2.2
 
 - Significantly optimised `round_sf` function

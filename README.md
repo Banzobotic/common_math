@@ -7,8 +7,11 @@ Currently, it only contains rounding functions, however more functions may be ad
 
 ## Modules
 
-- **Rounding** - functions for rounding - offers rounding to a number of zeros, decimal places or significant figures
+- [**Rounding**](https://docs.rs/common_math/0.2.2/common_math/rounding/index.html) - functions for rounding - 
+offers rounding to a number of zeros, decimal places or significant figures
 
 ## Disclaimer
 
 This project is still in early development and all parts of the api are currently unstable
+however if there are breaking changes, I will make sure to bump the minor version 
+so cargo won't switch version automatically  

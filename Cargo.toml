@@ -1,6 +1,6 @@
 [package]
 name = "common_math"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["Banzobotic (Andrew Twigg)"]
 license = "MIT OR Apache-2.0"
 description = "A collection of common math functions"
@@ -14,6 +14,5 @@ include = [
     "/src",
     "/Cargo.toml",
     "/README.md",
-    "/LICENCE.txt",
 ]
 edition = "2021"

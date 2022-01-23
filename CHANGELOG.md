@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to Semantic Versioning.
 
+## 0.2.4
+- Fix link in readme
+- Add link to changelog in readme
+
 ## 0.2.3
 - Improvements to documentation
 - Hide apply_round and other private functions from documentation

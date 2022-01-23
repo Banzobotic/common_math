@@ -9,6 +9,7 @@ This project adheres to Semantic Versioning.
 - Can now round using methods eg `number.round_dp(2)` as well as by using functions eg `round(number, 2)`
 - Can now round up or down to a number of significant figures with `ceil_sf` and `floor_sf`
 - Improved wording of doc comments
+- Optimised rounding f32 types with fewer type conversions
 
 ## 0.2.4
 - Fix link in readme

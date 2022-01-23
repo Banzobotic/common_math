@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to Semantic Versioning.
 
+## 0.3.0
+- No breaking changes
+- Can now round using methods eg `number.round_dp(2)` as well as by using functions eg `round(number, 2)`
+- Can now round up or down to a number of significant figures with `ceil_sf` and `floor_sf`
+- Improved wording of doc comments
+
 ## 0.2.4
 - Fix link in readme
 - Add link to changelog in readme

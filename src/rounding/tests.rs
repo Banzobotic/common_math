@@ -63,5 +63,6 @@ fn test_round_sf() {
     assert_eq!(round_sf(123.456_f32, 3), 123_f32);
     assert_eq!(round_sf(12345_i32, 3), 12300_i32);
     assert_eq!(round_sf(123456789_u64, 5), 123460000_u64);
-    assert_eq!(round_sf(-123456_i64, 2), -120000_i64)
+    assert_eq!(round_sf(-123456_i64, 2), -120000_i64);
+    assert_eq!(round_sf(123.456_f64, 4), 123.5_f64);
 }
